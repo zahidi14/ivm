@@ -1,13 +1,14 @@
 import InputBase from "@mui/material/InputBase";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, IconButton, useTheme } from "@mui/material";
-
-export const Navbar=()=>{
+import { useContext } from "react";
+import { ColorModeContext, tokens } from "../../misc/theme";
+ const Navbar=()=>{
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
@@ -30,21 +31,23 @@ export const Navbar=()=>{
       <Box display="flex">
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
-            <DarkModeOutlinedIcon />
+            <DarkModeIcon />
           ) : (
-            <LightModeOutlinedIcon />
+            <LightModeIcon />
           )}
         </IconButton>
         <IconButton>
-          <NotificationsOutlinedIcon />
+          <NotificationsIcon />
         </IconButton>
         <IconButton>
-          <SettingsOutlinedIcon />
+          <SettingsIcon />
         </IconButton>
         <IconButton>
-          <PersonOutlinedIcon />
+          <PersonIcon />
         </IconButton>
       </Box>
     </Box>
     )
 }
+
+export default Navbar

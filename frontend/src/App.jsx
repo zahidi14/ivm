@@ -1,27 +1,28 @@
-import { useState } from 'react'
-import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from './misc/theme';
-import { Dashboard, Navbar } from './components';
-Dashboard
+import { ColorModeContext, useMode } from "./misc/theme";
+import "./app.scss";
+import { Navbar, Side } from "./components/StyledComp";
+import Router from "./misc/Router";
+
 function App() {
   const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
+
   return (
     <ColorModeContext.Provider value={colorMode}>
-    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          {/* <Sidebar isSidebar={isSidebar} /> */}
+          <Side isSidebar={isSidebar} />
           <main className="content">
-           <Navbar />
-            <Routes>
-              <Route path="/" element={<Dashboard />} /> 
-            </Routes>
+            <Navbar setIsSidebar={setIsSidebar} />
+            <Router />
           </main>
         </div>
       </ThemeProvider>
-      </ColorModeContext.Provider>
-  )
+    </ColorModeContext.Provider>
+  );
 }
 
-export default App
+export default App;
