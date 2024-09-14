@@ -1,8 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Dashboard, Product } from "../components/pageComp";
-import Order from "../components/pageComp/Order";
-import Report from "../components/pageComp/Report";
+import {
+  Dashboard,
+  Product,
+  AddProduct,
+  Report,
+  Order,
+} from "../components/pageComp";
 import Login from "../page/Login/Login";
 import NotFound from "../page/NotFound/NotFound";
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -16,6 +20,14 @@ const Router = () => {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/add-product"
+        element={
+          <ProtectedRoute>
+            <AddProduct />
           </ProtectedRoute>
         }
       />

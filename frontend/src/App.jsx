@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./misc/theme";
 import "./app.scss";
 import { Navbar, Side } from "./components/StyledComp";
@@ -19,7 +19,13 @@ function App() {
           {!isAuth && <Side isSidebar={isSidebar} />}
           <main className="content">
             {!isAuth && <Navbar setIsSidebar={setIsSidebar} />}
-            <Router />
+            <Box
+              sx={{
+                padding: "2em",
+              }}
+            >
+              <Router />
+            </Box>
           </main>
         </div>
       </ThemeProvider>

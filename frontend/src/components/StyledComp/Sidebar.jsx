@@ -16,7 +16,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     <MenuItem
       active={selected === title}
       style={{
-        color: colors.grey[100],
+        color: colors.main,
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -40,7 +40,7 @@ const Side = () => {
         rootStyles={{
           [`.${sidebarClasses.container}`]: {
             height: " 100vh",
-            backgroundColor: "black",
+            backgroundColor: theme.palette.background.paper,
           },
         }}
       >
@@ -61,7 +61,7 @@ const Side = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
+                <Typography variant="h3" color={colors.main}>
                   ADMIN
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -85,13 +85,13 @@ const Side = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h2"
-                  color={colors.grey[100]}
+                  color={colors.main}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  Zero
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
+                <Typography variant="h5" color={colors.main}>
                   VP Fancy Admin
                 </Typography>
               </Box>
