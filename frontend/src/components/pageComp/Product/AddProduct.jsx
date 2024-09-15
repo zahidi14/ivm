@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../../../misc/supabaseClient";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
@@ -41,38 +41,59 @@ const AddProduct = () => {
   return (
     <Box
       component="form"
-      sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
+      sx={{
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+
+        flexDirection: "column",
+        padding: "5em",
+      }}
       noValidate
       autoComplete="off"
     >
+      <Typography variant="h2" gutterBottom>
+        Add new Product
+      </Typography>
       <TextField
         id="standard-basic"
-        label="Standard"
+        label="Name"
         variant="standard"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        fullWidth
       />
       <TextField
         id="standard-basic"
-        label="Standard"
+        label="Description"
         variant="standard"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
+        fullWidth
       />
       <TextField
         id="standard-basic"
-        label="Standard"
+        label="Price"
         variant="standard"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
+        fullWidth
       />
       <TextField
-        id="standard-basic"
-        label="Standard"
+        id="filled-number"
+        label="Number"
+        type="number"
         variant="standard"
         value={stock}
+        slotProps={{
+          inputLabel: {
+            shrink: true,
+          },
+        }}
         onChange={(e) => setStock(e.target.value)}
+        fullWidth
       />
+
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 2, mb: 2 }}>
         Add
       </Button>
