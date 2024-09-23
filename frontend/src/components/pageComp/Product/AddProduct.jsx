@@ -94,7 +94,13 @@ const AddProduct = () => {
         fullWidth
       />
 
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 2, mb: 2 }}>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 2, mb: 2 }}
+        onClick={handleAdd}
+      >
         Add
       </Button>
     </Box>
