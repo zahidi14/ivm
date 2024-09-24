@@ -16,7 +16,8 @@ const Router = () => {
   return (
     <Routes>
       <Route
-        path="/home"
+        exact
+        path="/"
         element={
           <ProtectedRoute>
             <Dashboard />
