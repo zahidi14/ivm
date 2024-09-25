@@ -1,22 +1,19 @@
-const supabase = require("../config/supabaseClient");
+const jwt = require("jsonwebtoken");
 
+require("dotenv").config();
 
-const auth = async (req,res, next)=>{
-    const token = req.headers.authorization?.split(' ')[1];
+const authToken = async (req, res, next) => {
+  const token = req.header("Authorization")?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Access denied" });
 
-    if(!token){
-        res.status(401).json({error : "missing or invalid token"})
-    }
+  try {
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = verified;
+    // res.json({ message: "authorized" });
+    next();
+  } catch (err) {
+    res.status(400).json({ error: err, message: "invalid token" });
+  }
+};
 
-    const {data, error} =  await supabase.auth.getUser(token);
-   
-
-    if(!data.user || error){
-        res.status(401).json({error: "invalid or expired token"})
-    }
-
-    req.user = data.user
-    next()
-}
-
-module.exports = auth
+module.exports = authToken;
